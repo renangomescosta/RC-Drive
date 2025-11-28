@@ -1,0 +1,25 @@
+.header {
+  background-color: #0056D2;
+  padding: 10px 20px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-icon-connected {
+  height: 25px; /* Ajuste para o tamanho que quiser */
+  padding: 10px 10px;
+  width: auto;  /* Mantém a proporção */
+  margin-right: 20px;
+}
+
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}

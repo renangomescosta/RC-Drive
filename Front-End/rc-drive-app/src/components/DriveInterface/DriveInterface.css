@@ -1,0 +1,90 @@
+/* Profile.css */
+
+/* --- NOVO: O Pai de todos (o wrapper) é quem segura a posição --- */
+.profile-wrapper {
+  position: relative; /* O segredo está aqui: o dropdown vai se guiar por este elemento */
+  display: inline-block; /* Faz o wrapper ter o tamanho do conteúdo apenas */
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+/* O Botão/Header */
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  /* position: relative;  <-- REMOVIDO: Não é necessário aqui */
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+  font-family: sans-serif;
+  user-select: none;
+  background-color: #0058d23c; /* Adicionei uma cor de fundo suave para teste */
+}
+
+.profile-container:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+.profile-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Dropdown Menu */
+.profile-dropdown {
+  position: absolute;
+  top: 100%; /* 100% cola ele exatamente embaixo do wrapper */
+  right: 0;  /* Alinha à direita do wrapper */
+  margin-top: 5px; /* Um pequeno respiro entre o botão e o menu */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 200px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+  cursor: pointer; /* Importante para indicar clique */
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-avatar {
+  width: 30;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  display:block;
+  background-color: #ccc
+}
+
+.dropdown-name {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

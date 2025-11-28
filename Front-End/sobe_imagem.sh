@@ -1,0 +1,1 @@
+docker build -t rc-drive-app rc-drive-app/
