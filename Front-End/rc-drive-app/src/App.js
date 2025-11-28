@@ -1,46 +1,22 @@
-import { useState } from 'react';
+import React from 'react';
 import Header from './components/Header/Header';
+import { MyFileBrowser } from './components/FileBrowser/FileBrowser';
 
-// --- 1. AGRUPE TODOS OS IMPORTS NO TOPO ---
-import { setChonkyDefaults, FullFileBrowser } from 'chonky';
-import { ChonkyIconFA } from 'chonky-icon-fontawesome';
-
-// --- 2. CONFIGURE O CHONKY LOGO ABAIXO DOS IMPORTS ---
-setChonkyDefaults({ iconComponent: ChonkyIconFA });
-
-// --- 3. SEU COMPONENTE DE ARQUIVOS ---
-export const MyFileBrowser = () => {
-    const files = [
-        { id: 'lht', name: 'Projects', isDir: true },
-        {
-            id: 'mcd',
-            name: 'chonky-sphere-v2.png',
-            thumbnailUrl: 'https://chonky.io/chonky-sphere-v2.png',
-        },
-    ];
-    const folderChain = [{ id: 'xcv', name: 'Demo', isDir: true }];
-    
-    // O Chonky precisa de altura definida no pai para aparecer
-    return (
-        <div style={{ height: 300 }}>
-            <FullFileBrowser files={files} folderChain={folderChain} />
-        </div>
-    );
-};
-
-const perfil = 'Renan'; 
-
-// --- 4. O APP PRINCIPAL ---
 export default function App() {
   return (
-    <div>
-      <div><Header /></div>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Header />
       
-      <div style={{ display: 'flex', gap: '20px', padding: '20px' }}>
-        <div>Resumo Nuvem</div>
+      <div style={{ display: 'flex', flex: 1, gap: '20px', padding: '20px', backgroundColor: '#f5f5f5' }}>
         
-        {/* AQUI ESTÁ O PULO DO GATO: Você precisa chamar o componente aqui */}
-        <div style={{ flex: 1 }}> 
+        {/* Barra Lateral (Mockada por enquanto) */}
+        <div style={{ width: '200px', backgroundColor: 'white', padding: '15px', borderRadius: '8px' }}>
+          <h3>Resumo Nuvem</h3>
+          <p>4GB usados de 15GB</p>
+        </div>
+        
+        {/* Área Principal com o File Browser */}
+        <div style={{ flex: 1, backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden' }}> 
             <MyFileBrowser />
         </div>
       </div>
