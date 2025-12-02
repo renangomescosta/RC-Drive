@@ -1,24 +1,18 @@
 package app.model;
 
 public class Profile {
-    private String nome;
+    private String name;
     private String email;
 
-    public Profile(){
+    public Profile(String name, String email){
+        setName(name);
+        setEmail(email);
     }
 
-    public String getNome() {
-        return nome;
-    }
-    public String getEmail() {
-        return email;
-    }
+    public String getName() {return name;}
+    public String getEmail() {return email;}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setName(String name) {this.name = name;}
+    public void setEmail(String email) {this.email = email;}
 
 }
