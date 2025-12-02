@@ -1,14 +1,24 @@
-package java.app.model;
+package app.model;
 
 public class Profile {
     private String nome;
     private String email;
-    private String caminhoFoto;
 
-    public Profile(String nome, String, email, String caminhoFoto){
-
-        
+    public Profile(){
     }
 
+    public String getNome() {
+        return nome;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }
