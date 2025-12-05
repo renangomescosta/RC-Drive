@@ -1,7 +1,6 @@
 package app.service;
 import app.model.S3Manager;
 import app.model.Profile;
-import app.model.File;
 import app.model.Folder;
 import app.entities.FileSystemEntity;
 
@@ -14,21 +13,11 @@ public class DriveService {
     private List<Profile> allProfiles;
     private final S3Manager s3Manager = new S3Manager();
 
-    public static void main(String[] args) {
-        DriveService teste = new DriveService();
-        System.out.println(teste.getcurrentlyProfile().getName());
-        System.out.println(teste.getcurrentlyPath());
-        System.out.println(teste.getcurrentlyPath());
-
-    }
-
     public DriveService(){
         loadAllProfiles();
         loadDirectoryProfile(0);
-
-
     }
-    public void loadAllProfiles(){
+    private void loadAllProfiles(){
         List<Profile> allProfiles = new ArrayList<>();
         List<FileSystemEntity> allItens = s3Manager.getAllItensInPath("/");
         for(FileSystemEntity item: allItens)
@@ -38,18 +27,32 @@ public class DriveService {
         this.allProfiles = allProfiles;
 
     }
-    public void loadDirectoryProfile(int profileId){ // Vê se vai continuar como profileId
+    private void loadDirectoryProfile(int profileId){ // Vê se vai continuar como profileId
         Profile currentlyProfile = this.allProfiles.get(profileId);
         setcurrentlyProfile(currentlyProfile);
         setcurrentlyPath(String.format("/%s/", currentlyProfile.getName()));
     }
 
+    // Código com baixa coesão: é necessário criar uma nova classe --> ProfileManager
     public String getcurrentlyPath(){return this.currentlyPath;}
     public Profile getcurrentlyProfile(){return this.currentlyProfile;}
+    public List<Profile> getAllProfiles(){return this.allProfiles;}
 
     public void setcurrentlyProfile(Profile currentlyProfile){this.currentlyProfile = currentlyProfile;}
     public void setcurrentlyPath(String currentlyPath){this.currentlyPath = currentlyPath;}
 
+    public String buildCurrentlyProfile(){return ProfileToJSON(getcurrentlyProfile());}
+    public String buildAllProfiles(){
+        String s= "";
+        for(Profile profile: allProfiles){
+            s += ProfileToJSON(profile) + ",";
+        }
+        return s.substring(0, s.length() - 1);
+    }
+    private String ProfileToJSON(Profile profile){
+        int id = getAllProfiles().indexOf(profile);
+        return String.format("{\"id\": \"%d\", \"Profile\": \"%s\"}", id, profile.getName());
+    }
 }
 
 

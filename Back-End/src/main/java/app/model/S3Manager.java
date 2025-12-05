@@ -12,11 +12,13 @@ public class S3Manager {
     }
 
     public HashMap<Integer, String> writeFile(String path){
+        // Construir Requisição...
         HashMap<Integer, String> statusExit = new HashMap<>();
         statusExit.put(400, "Saída Bem Sucedida");
         return statusExit;
     }
     public HashMap<Integer, String> deleteFile(String path){
+        // Construir Requisição...
         HashMap<Integer, String> statusExit = new HashMap<>();
         statusExit.put(400, "Saída Bem Sucedida");
         return statusExit;
